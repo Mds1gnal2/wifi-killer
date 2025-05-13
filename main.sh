@@ -1,10 +1,11 @@
 #!/bin/bash
-
+# TODO: #3 change the timeout command for the mkfifo shell-in-a-file
 function process(){
     cat ${1} | tr -c ' ' '\n' | grep ':' >> ${1}-list
 }
 
 sudo airmon-ng start wlan1
+# Setup a simulated shell cuz i can't get the sh*tty timeout working
 mkfifo /tmp/shell; tail -f /tmp/shell | /bin/sh 2>&1 > /tmp/shell &
 while true
 do
