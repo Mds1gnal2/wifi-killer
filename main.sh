@@ -13,7 +13,7 @@ function stop (){
     echo '^C' > /tmp/shell
 }
 
-# Setup monitor mode with airmon-ng cuz with
+# Setup monitor mode with airmon-ng cuz is easier
 sudo airmon-ng start wlan1
 
 # Setup a simulated shell cuz i can't get the sh*tty timeout command working
@@ -27,7 +27,7 @@ do
     stop 20
 
     process-file /tmp/devices
-    
+
     for af2 in $(cat /tmp/devices-list)
     do
         echo -e "sudo airodump-ng --bssid ${af2} wlan1mon | tee /tmp/devices-in-wifi\n" > /tmp/shell
