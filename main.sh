@@ -3,7 +3,6 @@
 # TODO: #4 change variables names to something understandable by humans
 
 # Functions
-
 function process-file (){
     cat ${1} | tr -c ' ' '\n' | grep ':' | tee ${1}-list
 }
